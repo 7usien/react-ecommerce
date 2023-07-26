@@ -1,0 +1,125 @@
+.header {
+ margin-top: 10px;
+ margin-bottom: 20px;
+ position: relative;
+}
+
+.headerTop {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+}
+
+nav {
+ background-color: black;
+ display: flex;
+ justify-content: space-between;
+}
+
+.mainNav,
+.secNav {
+ display: flex;
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+}
+
+.mainNav li,
+.secNav li {
+ padding: 10px 0 10px 0;
+ margin: 0px 5px 0 5px;
+ position: relative;
+}
+
+.mainNav li a,
+.secNav li a {
+ color: white;
+ text-decoration: none;
+ font-size: 14px;
+}
+
+.mainNav li a:hover::after,
+.secNav li a:hover::after,
+.activeLink::after {
+ content: "";
+ display: block;
+ position: absolute;
+ background-color: orange;
+ height: 3px;
+ width: 100%;
+ bottom: 0;
+ right: 0;
+ left: 0;
+}
+
+.shoppingCart {
+ position: relative;
+}
+
+.shoppingCartCounter {
+ background-color: #0dcaf0;
+ height: 20px;
+ width: 20px;
+ border-radius: 10px;
+ text-align: center;
+ border: 1px solid;
+ position: absolute;
+ top: -15px;
+ right: 11px;
+ font-size: 12px;
+}
+
+.bumbCard {
+ animation: bump 0.4s ease-in-out;
+}
+
+@keyframes bump {
+ 0% {
+  transform: scale(1);
+ }
+ 20% {
+  transform: scale(0.8);
+ }
+ 50% {
+  transform: scale(1.7);
+ }
+ 100% {
+  transform: scale(1);
+ }
+}
+
+.notification {
+ position: absolute;
+ bottom: 10px;
+ right: 20px;
+ width: 450px;
+ filter: drop-shadow(4px 4px 6px rgba(79, 17, 17, 0.533));
+ font-weight: bold;
+ text-align: center;
+ text-transform: capitalize;
+ animation: popup 0.3s ease-out;
+}
+
+@keyframes popup {
+ 0% {
+  transform: translateX(450px);
+ }
+ 100% {
+  transform: translateX(20px);
+ }
+}
+
+.notificationInner {
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+ column-gap: 1rem;
+}
+.notificationImg {
+ width: 50px;
+ display: block;
+ height: 50px;
+ margin-right: 0.5rem;
+
+ border-radius: 50%;
+}
