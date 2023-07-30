@@ -1,0 +1,10 @@
+.totalPriceDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0,0,0,.1);
+  padding: 1rem 1.5rem;
+  border: 1px solid #ccc;
+  text-transform: capitalize;
+  font-weight: bold;
+}

@@ -61,4 +61,21 @@ export const totalCartQuantity = createSelector(
  }
 );
 
+export const totalCartPrice = createSelector(
+  (state) => state.cart.items,
+  (state) => state.products.items,
+  
+  (items, products) => {
+    let price = 0;
+
+    for (let product of products) {
+     
+      price += items[product.id]*product.price;
+    }
+    return price
+
+  }
+
+)
+
 export const { closeReachToMax, changeQuantity, removeItem } = cartReducer.actions;
