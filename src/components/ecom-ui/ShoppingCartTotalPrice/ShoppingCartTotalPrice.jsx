@@ -5,7 +5,7 @@ const ShoppingCartTotalPrice = ({totalPrice}) => {
 
   const {totalPriceDiv}=styles
   return (
-    <div className={totalPrice}>
+    <div className={totalPriceDiv}>
 
       <span>total price:</span>
       <span>{totalPrice} $</span>

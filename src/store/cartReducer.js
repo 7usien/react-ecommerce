@@ -72,7 +72,7 @@ export const totalCartPrice = createSelector(
      
       price += items[product.id]*product.price;
     }
-    return price
+    return price.toFixed(2)
 
   }
 
