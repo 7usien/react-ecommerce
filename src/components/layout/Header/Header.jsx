@@ -3,7 +3,7 @@ import shoppingCartImg from "../../../assets/shopping-cart.svg";
 import { totalCartQuantity } from "../../../store/cartReducer";
 import { closeReachToMax } from "../../../store/cartReducer";
 import styles from "./styles.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { filterProductsByID } from "../../../store/productReducer";
@@ -36,7 +36,7 @@ const Header = () => {
   }
  }, [reachToMax, currentId]);
 
- const { currentItem } = useSelector((state) => state.items);
+ const { currentItem } = useSelector((state) => state.products);
 
  const closeReachToMaxHandler = () => {
   dispatch(closeReachToMax());
@@ -80,9 +80,11 @@ const Header = () => {
      <h1>
       Our <Badge bg="info">Ecom</Badge>
      </h1>
-     <div className={shoppingCart}>
+         <div className={shoppingCart}>
+           <Link to="shopping-cart">
       <img alt="" src={shoppingCartImg} width="30" />
-      <div className={`${cardClasses}`}>{total}</div>
+             <div className={`${cardClasses}`}>{total}</div>
+             </Link>
      </div>
     </div>
 

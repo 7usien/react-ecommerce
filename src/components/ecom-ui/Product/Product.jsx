@@ -1,7 +1,7 @@
 import { Button, Spinner } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { useDispatch } from "react-redux";
-import { addtocart } from "../../../store/cartReducer";
+import { addtocart, removeItem } from "../../../store/cartReducer";
 import { useEffect, useState } from "react";
 
 const Product = ({
@@ -21,7 +21,11 @@ const Product = ({
   if (actionType === "add") {
    dispatch(addtocart({ id, max }));
    setBtnClicked((prev) => prev + 1);
-  }
+   }
+   if (actionType === "remove") {
+     dispatch(removeItem(id))
+   }
+
  };
 
  const [disabled, setDisabled] = useState(false);
@@ -29,7 +33,7 @@ const Product = ({
 
  useEffect(() => {
   if (btnClicked === 0) return;
-  
+
   setDisabled(true);
 
   const debounce = setTimeout(() => {
@@ -51,7 +55,7 @@ const Product = ({
    <Button
     variant="info"
     onClick={actionHandler}
-    disabled={disabled }
+    disabled={disabled}
     className={button}>
     {disabled ? (
      <>
@@ -62,10 +66,9 @@ const Product = ({
        role="status"
        aria-hidden="true"
       />
-      
       Loading...
      </>
-    ) :  (
+    ) : (
      btnText || "Add to cart"
     )}
    </Button>

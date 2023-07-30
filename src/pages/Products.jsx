@@ -19,7 +19,7 @@ const Products = () => {
    }
  }, [prefix, dispatch]);
 
- const { items, loading, error } = useSelector((state) => state.items);
+ const { items, loading, error } = useSelector((state) => state.products);
  return (
   <GridList data={items} loading={loading} error={error}>
    <Product />

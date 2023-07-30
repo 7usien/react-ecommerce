@@ -2,13 +2,13 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const cartReducer = createSlice({
  name: "cart",
- initialState: { items: {}, reachToMax: false, currentId: null},
+ initialState: { items: {}, reachToMax: false, currentId: null },
  reducers: {
   addtocart: (state, action) => {
    let id = action.payload.id;
-     let max = action.payload.max;
-     
-     state.currentId = id;
+   let max = action.payload.max;
+
+   state.currentId = id;
 
    if (state.items[id] === max) {
     state.reachToMax = true;
@@ -24,6 +24,19 @@ const cartReducer = createSlice({
      state.items[id] = 1;
     }
    }
+   },
+   removeItem: (state, action) => {
+     
+     const id = action.payload;
+     console.log(id)
+     delete state.items[id];
+     
+   },
+
+  changeQuantity: (state, action) => {
+    const { id, quantity } = action.payload;
+    console.log(action)
+   state.items[id] = quantity; //2:2 id:quantity
   },
   closeReachToMax: (state, action) => {
    state.reachToMax = false;
@@ -48,6 +61,4 @@ export const totalCartQuantity = createSelector(
  }
 );
 
-
-
-export const {closeReachToMax}=cartReducer.actions;
+export const { closeReachToMax, changeQuantity, removeItem } = cartReducer.actions;

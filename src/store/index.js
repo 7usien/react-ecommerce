@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import categories from "./categoryReducer";
-import items from "./productReducer";
+import products from "./productReducer";
 import cart from "./cartReducer";
 
 import {
@@ -22,7 +22,7 @@ const persistConfig = {
  whiteList: ["cart"],
 };
 
-const rootReducer = combineReducers({  cart, categories, items });
+const rootReducer = combineReducers({  cart, categories, products});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
