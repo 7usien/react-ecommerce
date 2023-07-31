@@ -1,7 +1,7 @@
 import React from 'react'
-import { CartItem } from '../ecom-ui';
+import CartItem from '../CartItem/CartItem';
 
-const ShoppingCartList = ({products, items, changeQuantityhandler}) => {
+const CartList = ({products, items, changeQuantityhandler}) => {
 
   const shoppingCartListArray =
   products.length ?
@@ -18,11 +18,10 @@ const ShoppingCartList = ({products, items, changeQuantityhandler}) => {
 
  
 
-console.log('list')
 
   return (
     <>{shoppingCartListArray}</>
   )
 }
 
-export default ShoppingCartList
+export default CartList
