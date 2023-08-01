@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -14,8 +14,27 @@ const ShoppingHeadingCart = () => {
  const [isAnimateCard, setIsAnimateCard] = useState(false);
  const cardClasses = `${shoppingCartCounter} ${isAnimateCard ? pumbCard : ""}`;
 
-  const [cartDropOpen, setCartDropOpen] = useState(false);
-  
+
+ const [cartDropOpen, setCartDropOpen] = useState(false);
+ const divE1 = useRef();
+
+ const closeCartDrop = useCallback(() => {
+   setCartDropOpen(false);
+   
+ }, []);
+
+ useEffect(() => {
+  const handler = (event) => {
+   if (!divE1.current.contains(event.target)) {
+    closeCartDrop();
+   }
+   document.addEventListener("click", handler, true);
+   return () => {
+    document.removeEventListener("click", handler);
+   };
+  };
+ }, [closeCartDrop]);
+
  useEffect(() => {
   if (total === 0) return; //stop or break
   setIsAnimateCard(true);
@@ -30,11 +49,14 @@ const ShoppingHeadingCart = () => {
  }, [total]);
 
  return (
-  <div className={shoopingCart} onClick={()=>setCartDropOpen(prev=>!prev)}>
-   <img alt="" src={shoppingCartImg} width="30" />
-   <div className={`${cardClasses}`}>{total}</div>
-{cartDropOpen ?    <CartDrop /> : null}
-
+  <div ref={divE1}>
+   <div
+    className={shoopingCart}
+    onClick={() => setCartDropOpen((prev) => !prev)}>
+    <img alt="" src={shoppingCartImg} width="30" />
+    <div className={`${cardClasses}`}>{total}</div>
+    {cartDropOpen ? <CartDrop close={closeCartDrop} /> : null}
+   </div>
   </div>
  );
 };
